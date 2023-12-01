@@ -1,23 +1,29 @@
 import { v4 as uuidv4 } from 'uuid';
 
 
-class Loan {
-  getMonthPaymentByPercentage() {}
-  getTotalPaymentByPercentage() {}
+// class Loan {
+//   getMonthPaymentByPercentage() {}
+//   getTotalPaymentByPercentage() {}
 
-  getMonthPaymentByMonth() {}
-  getTotalPaymentByMonth() {}
+//   getMonthPaymentByMonth() {}
+//   getTotalPaymentByMonth() {}
+// }
+
+export interface DebtType {
+  name: string
+  remainingAmount: string
+  currentAPR: string
+  monthlyPayment: string
 }
 
-export class Debt extends Loan {
-  id: string = ''
-  name: string = ''
-  remainingAmount: number = 0
-  currentAPR: number = 0
-  monthlyPayment: number = 0
+export class Debt {
+  id: string
+  name: string
+  remainingAmount: string
+  currentAPR: string
+  monthlyPayment: string
 
-  constructor(name = 'Other', remainingAmount: number, currentAPR: number, monthlyPayment: number) {
-    super()
+  constructor(name = 'Other', remainingAmount = '', currentAPR = '', monthlyPayment = '') {
     this.id = uuidv4()
     this.name = name
     this.remainingAmount = remainingAmount
