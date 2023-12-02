@@ -1,13 +1,18 @@
-import React from 'react'
+import { useDebt } from '../../context/DebtContext';
+import * as S from './style'
 
 interface ConsolidatedProps {
   setReady: (ready: boolean) => void;
 }
 
 function ConsolidatedDebts({ setReady }: ConsolidatedProps) {
+  const { debtList } = useDebt()
+  
+
+
   return (
     <div>
-      <span onClick={() => setReady(false)}>goback link</span>
+      <S.AddingMoreDebt onClick={() => setReady(false)}>Update Your Current Debts</S.AddingMoreDebt>
       <div>
         Consolidate Loan title and subtitle
         input desired APR

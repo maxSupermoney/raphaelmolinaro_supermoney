@@ -10,13 +10,14 @@ import { v4 as uuidv4 } from 'uuid';
 // }
 
 export interface DebtType {
+  id: string
   name: string
   remainingAmount: string
   currentAPR: string
   monthlyPayment: string
 }
 
-export class Debt {
+export class Debt implements DebtType {
   id: string
   name: string
   remainingAmount: string

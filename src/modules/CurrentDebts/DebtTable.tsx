@@ -1,11 +1,9 @@
 import { Row, Col, Form } from 'antd';
 import * as S from './style'
 import { useDebt } from '../../context/DebtContext';
-
-import Input from '../../components/Input'
 import DebtRow from './DebtRow';
-import { useState } from 'react';
-import { Debt } from '../../models/debt';
+
+import { Debt, DebtType } from '../../models/debt';
 
 
 interface CurrentProps {
@@ -13,22 +11,28 @@ interface CurrentProps {
 }
 
 function DebtTable({ setReady }: CurrentProps) {
-  //const { addToList, removeFromList } = useDebt()
-  const [ tempDebts, setTempDebts ] = useState([new Debt()]);
+  const { addToList } = useDebt()
 
   const handleAddDebt = (values: any) => {
-    console.log('SUBMITTED', values)
-    //addToList()
-    setReady(true)
-  }
+    values.debts.forEach((debt: any) => {
+      const { debtName, apr, month, amount } = debt
 
-  const createDebt = () => {
-    setTempDebts(st => [...st, new Debt()])
+      if (debtName !== "" && apr !== '' && month !== "" && amount !== "") {
+        const newDebt: DebtType = new Debt(debtName, amount, apr, month)
+        addToList(newDebt)
+      }
+      else {
+        //display Error alert
+        //<Alert message="Error Text" type="error" />
+      }
+
+    })
+    setReady(true)
   }
 
   return (
     <>
-      <Form name="debts" onFinish={handleAddDebt}>
+      <Form onFinish={handleAddDebt} name="all">
 
         <Row gutter={16}>
           <S.ColTitle span={6}>DEBT NAME</S.ColTitle>
@@ -36,11 +40,20 @@ function DebtTable({ setReady }: CurrentProps) {
           <S.ColTitle span={6}>CURRENT APR</S.ColTitle>
           <S.ColTitle span={6}>CURRENT MONTHLY PAYMENT</S.ColTitle>
         </Row>
-        
-        {tempDebts.map((debt)=> <DebtRow debt={debt} key={debt.id}/>)} 
 
+        <Form.List name="debts">
+          {(fields, { add, remove }) => (
+            <>
+              {fields.map(({ key, name, ...restField }) => (
+                <DebtRow
+                  key={key} remove={remove}
+                  field={restField} name={name} />
+              ))}
+              <S.AddingMoreDebt onClick={() => add('', 0)}>+ Add another Debt</S.AddingMoreDebt>
+            </>
+          )}
+        </Form.List>
         <Row>
-          <h2 onClick={createDebt}>+ Add another Debt</h2>
           <S.ButtonSubmit type="primary" htmlType="submit" block>Calculate Savings</S.ButtonSubmit>
         </Row>
 

@@ -1,14 +1,15 @@
-import { useState, ChangeEvent, useCallback } from 'react'
+import { useState, ChangeEvent } from 'react'
 
-const useInput = ({ key = '' }) => {
-  const [ inputs, setInputs ] = useState('')
+
+const useInput = (name: string) => {
+  const [ inputs, setInputs ] = useState(name)
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
     setInputs(value)
   }
 
-  return { value: inputs, onChange }
+  return { inputs, onChange }
 }
 
 export default useInput

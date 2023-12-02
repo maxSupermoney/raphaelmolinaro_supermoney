@@ -1,29 +1,37 @@
+import { memo } from 'react';
 import { Row, Col, Form } from 'antd';
 import * as S from './style'
 import Input from '../../components/Input'
-import { Debt } from '../../models/debt';
 
 interface RowProps {
-  debt: Debt
+  name: number
+  remove: (n: number) => void
+  field: any
 }
 
-function DebtRow({ debt }: RowProps) {
+function DebtRow({ remove, field, name }: RowProps) {
 
-  console.log(debt)
   return (
     <Row gutter={16}>
-      <Form.Item name='id' />
-      <Col span={6}><Form.Item name="name"><Input fieldName='name' /></Form.Item></Col>
-      <Col span={6}><Form.Item name="amount"><Input fieldName='amount' addonBefore="$" /></Form.Item></Col>
-      <Col span={6}><Form.Item name="apr"><Input addonAfter="%" fieldName='apr' /></Form.Item></Col>
+      <Col span={6}><Form.Item {...field} name={[name, 'debtName']} required>
+        <Input fieldName={`${name}-debtName`} />
+      </Form.Item></Col>
+      <Col span={6}><Form.Item {...field} name={[name, 'amount']} required>
+        <Input addonBefore="$" fieldName={`${name}-amount`} />
+      </Form.Item></Col>
+      <Col span={6}><Form.Item {...field} name={[name, 'apr']} required>
+        <Input addonAfter="%" fieldName={`${name}-apr`} />
+      </Form.Item></Col>
       <Col span={6}>
         <S.DeleteContainer>
-          <Form.Item name="month"><Input addonBefore="$" fieldName='month' /></Form.Item>
-          <S.DeleteBox>X</S.DeleteBox>
+          <Form.Item {...field} name={[name, 'month']} required>
+            <Input addonBefore="$" fieldName={`${name}-month`} />
+          </Form.Item>
+          {name > 0 ? <S.DeleteBox onClick={() => remove(name)}>X</S.DeleteBox> : <span></span>}
         </S.DeleteContainer>
       </Col>
     </Row>
   )
 }
 
-export default DebtRow
+export default memo(DebtRow)
