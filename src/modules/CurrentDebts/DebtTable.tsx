@@ -1,8 +1,7 @@
-import { Row, Col, Form } from 'antd';
+import { Row, Form } from 'antd';
 import * as S from './style'
 import { useDebt } from '../../context/DebtContext';
 import DebtRow from './DebtRow';
-
 import { Debt, DebtType } from '../../models/debt';
 
 
@@ -14,6 +13,8 @@ function DebtTable({ setReady }: CurrentProps) {
   const { addToList } = useDebt()
 
   const handleAddDebt = (values: any) => {
+    if(!values.debts) return null;
+
     values.debts.forEach((debt: any) => {
       const { debtName, apr, month, amount } = debt
 
@@ -21,11 +22,6 @@ function DebtTable({ setReady }: CurrentProps) {
         const newDebt: DebtType = new Debt(debtName, amount, apr, month)
         addToList(newDebt)
       }
-      else {
-        //display Error alert
-        //<Alert message="Error Text" type="error" />
-      }
-
     })
     setReady(true)
   }

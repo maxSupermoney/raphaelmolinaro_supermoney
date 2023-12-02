@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const AddingMoreDebt = styled.h4`
   color: #06A9DB;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
 `
 
@@ -33,25 +33,37 @@ export const ContainerTotal = styled.div`
   height: 158px;
   border-top: 1px solid #C9C9C9;
   padding: 0;
-
-  & div:last-child {
-    background-color: #f0fbf6;
-  }
   
   & div > p {
     display: inline-block;
-    font-size: 14px;
+    font-size: 16px;
     width: 70%;
     padding-left: 24px;
   }
   & div > span {
     display: inline-block;
+    font-size: 20px;
     width: 10%;
   }
+  & div:first-child > span {
+    font-weight: 600;
+    color: #06A9DB;
+    font-size: 20px;
+  }
+
+  & div:last-child {
+    background-color: #f0fbf6;
+  }
   
-  & div:last-child > p {
+  & div:last-child > p, div:last-child > span {
     font-weight: 600;
   }
+
+  & div:last-child > span {
+    color: #00B290;
+    font-size: 22px;
+  }
+
 `
 
 export const ContainerMonth = styled.div`
@@ -61,23 +73,34 @@ export const ContainerMonth = styled.div`
   border-left: 1px solid #C9C9C9;
   padding: 0;
 
-  & div:last-child {
-    background-color: #f0fbf6;
-  }
-
   & div > p {
     display: inline-block;
-    font-size: 14px;
+    font-size: 16px;
     width: 70%;
     padding-left: 24px;
   }
   & div > span {
     display: inline-block;
-    width: 10%;
+    font-size: 20px;
+    width: 20%;
+  }
+  & div:first-child > span {
+    font-weight: 600;
+    color: #06A9DB;
+    font-size: 20px;
+  }
+
+  & div:last-child {
+    background-color: #f0fbf6;
   }
   
-  & div:last-child > p {
+  & div:last-child > p, div:last-child > span {
     font-weight: 600;
+  }
+
+  & div:last-child > span {
+    color: #00B290;
+    font-size: 22px;
   }
 `
 

@@ -18,11 +18,11 @@ export const DebtProvider = ({ children }: DebtProviderProps) => {
   const [debtList, setDebtList] = useState<Debt[]>([]);
 
   function addToList(item: Debt) {
-    setDebtList([...debtList, item]);
+    setDebtList(st => [...st, item]);
   }
 
   function removeFromList(id: string) {
-    setDebtList(debtList.filter((item) => item.id !== id));
+    setDebtList(st => st.filter((item) => item.id !== id));
   }
 
   return (<DebtContext.Provider value={{ debtList, addToList, removeFromList }}>

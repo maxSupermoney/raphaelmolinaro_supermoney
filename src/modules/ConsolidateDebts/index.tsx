@@ -1,9 +1,11 @@
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import Title from './Title';
+import * as S from './style';
 import { useDebt } from '../../context/DebtContext';
 import InputAPR from '../../components/DesiredSlider/InputAPR';
 import InputLoanTerm from '../../components/DesiredSlider/InputLoanTerm';
-import Title from './Title';
-import * as S from './style';
-import { useCallback, useMemo, useState } from 'react';
+import Loan from '../../models/Loan';
+
 
 interface ConsolidatedProps {
   setReady: (ready: boolean) => void;
@@ -11,11 +13,22 @@ interface ConsolidatedProps {
 
 function ConsolidatedDebts({ setReady }: ConsolidatedProps) {
   const { debtList } = useDebt();
-  const [newDebt, setNewDebt] = useState({ apr: 8, month: 24 })
+  const [ loan, setLoan] = useState({ selectAPR: 8, selectMonth: 24 })
+  const [ oldDebt, setOldDebt ] = useState({ oldAmount: 0, oltMonth: 0 })
+  const { selectAPR, selectMonth } = loan
 
-  const handleApr = useCallback((value: number) => setNewDebt(st => ({ ...st, apr: value })), [newDebt.apr])
-  const handleMonth = useCallback((value: number) => setNewDebt(st => ({ ...st, month: value })), [newDebt.month])
+  const handleApr = useCallback((value: number) => setLoan(st => ({ ...st, selectAPR: value })), [selectAPR])
+  const handleMonth = useCallback((value: number) => setLoan(st => ({ ...st, selectMonth: value })), [selectMonth])
 
+  useEffect(() => {
+    function calculateOldLoan() {
+      const { oldAmount, oltMonth } = Loan.getOldLoan(debtList)
+      setOldDebt({ oldAmount, oltMonth })
+    }
+    calculateOldLoan()
+  }, [debtList])
+
+  const newDebt = useMemo(() => Loan.getNewLoan(debtList, selectAPR, selectMonth), [selectAPR, selectMonth])
 
   return (
     <>
@@ -23,22 +36,22 @@ function ConsolidatedDebts({ setReady }: ConsolidatedProps) {
       <S.Wrapper>
         <S.ContainerInput>
           <Title />
-          <InputAPR onChange={handleApr} value={newDebt.apr} />
-          <InputLoanTerm onChange={handleMonth} value={newDebt.month} />
+          <InputAPR onChange={handleApr} value={selectAPR} />
+          <InputLoanTerm onChange={handleMonth} value={selectMonth} />
         </S.ContainerInput>
         <S.ContainerTotal>
-          <div><p>new total Repayment </p><span>$6513</span></div>
-          <div><p>Current Total Repayment </p><span>$6750</span></div>
-          <div><p>Total Repayment Savings </p><span>$237</span></div>
+          <div><p>New total Repayment </p><span>${newDebt.newAmount}</span></div>
+          <div><p>Current Total Repayment </p><span>${oldDebt.oldAmount}</span></div>
+          <div><p>Total Repayment Savings </p><span>${(oldDebt.oldAmount - newDebt.newAmount).toFixed(2)}</span></div>
         </S.ContainerTotal>
         <S.ContainerMonth>
-          <div><p>New Monthly Repayment </p><span>$271.36</span></div>
-          <div><p>Current Monthly Repayment </p><span>$450.00</span></div>
-          <div><p>Total Monthly Savings </p><span>$178.64</span></div>
+          <div><p>New Monthly Repayment </p><span>${newDebt.newMonth}</span></div>
+          <div><p>Current Monthly Repayment </p><span>${oldDebt.oltMonth}</span></div>
+          <div><p>Total Monthly Savings </p><span>${(oldDebt.oltMonth - newDebt.newMonth).toFixed(2)}</span></div>
         </S.ContainerMonth>
       </S.Wrapper>
     </>
   );
 }
 
-export default ConsolidatedDebts;
+export default ConsolidatedDebts
