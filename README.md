@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# SuperMoney Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a challenge provided by Max by Supermoney.com
 
-## Available Scripts
+It tooks me 9 hours and 12 min
 
-In the project directory, you can run:
+**Commits Timeline:**  \
+9 hours and 12 min - Finished Design, Formulas, Cleaning code \
+7 - 8 hours - memonizied functions, spent too much time to understand finance (values match with figma?), Loan Model, Context and States \
+4 hour - 6hours and 45 min - Forms, refactors data structure, inputs details \
+1 hour - 3 hour - Built pages, create Hook, Optimized Performance, create models, functionalities and understand finance Results  \
+0 - 1 hour - Create repo and react app, Install packages, create archicteture, folder struture, Context, docker  
 
-### `npm start`
+### Alternatives to run application
+1) Run local via yarn start  
+2) Run local via docker-compose up
 
-Runs the app in the development mode.\
+### Alternative 1
+
+1.1. Clone the repo 
+
+1.2. Install dependencies `yarn install`
+
+1.3. Run  Locally `yarn start`
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Alternative 2 (via Docker)
 
-### `npm test`
+1.1. Clone the repo 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1.2. Run `docker-compose up`.
 
-### `npm run build`
+1.3. to stop and clean, `docker-compose down`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### TASK
 
-### `npm run eject`
+**Assignment:** Build a browser based Debt Consolidation Savings Calculator
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Background:** Consumers may have many high interest debts, like auto loans, credit cards, or other installment loans. They can save money by combining all of their high interest debts into a single loan with a lower interest rate.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+We want to help consumers determine exactly how much money they can save by consolidating their loans.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Description:** Use the prototype to create a browser based debt consolidation savings calculator.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Users can enter the details of their multiple high interest debts, and the calculator will show them how much they can save with a single consolidated loan. The amount of the new loan will  be the sum of the outstanding balances of the existing loans. The user can change the potential term and APR of their consolidated loan to see how those affect the monthly payments and overall repayment.
 
-## Learn More
+__The solution would preferably be written in React__, but any modern Javascript framework will be acceptable (not JQuery).
+The submission should run in any modern browser (IE compatibility not required)
+A financial calculations library has been included to simplify the loan calculations. Check the link for documentation. Some people seem to have issues figuring out how to use the recommended library, so feel free to use other libraries.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+***Submitting the Solution:*** Create a new private repo in GitHub and invite maxSupermoney so that we can review the solution. Please let us know how many hours took you to complete the challenge.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Links
+Prototype: https://www.figma.com/proto/LVGPlj3qxywOt4zPagrFTX/Debt-Consolidation-Savings-Calculator?node-id=1%3A2&scaling=min-zoom&page-id=0%3A1
+Finance.js Loan Library: https://trentrichardson.com/examples/FinanceJs/index.html
