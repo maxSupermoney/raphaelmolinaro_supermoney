@@ -37,13 +37,13 @@ export const ContainerTotal = styled.div`
   & div > p {
     display: inline-block;
     font-size: 16px;
-    width: 70%;
+    width: 64%;
     padding-left: 24px;
   }
   & div > span {
     display: inline-block;
     font-size: 20px;
-    width: 10%;
+    width: 20%;
   }
   & div:first-child > span {
     font-weight: 600;
@@ -76,7 +76,7 @@ export const ContainerMonth = styled.div`
   & div > p {
     display: inline-block;
     font-size: 16px;
-    width: 70%;
+    width: 64%;
     padding-left: 24px;
   }
   & div > span {

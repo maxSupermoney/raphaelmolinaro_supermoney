@@ -40,13 +40,13 @@ function ConsolidatedDebts({ setReady }: ConsolidatedProps) {
           <InputLoanTerm onChange={handleMonth} value={selectMonth} />
         </S.ContainerInput>
         <S.ContainerTotal>
-          <div><p>New total Repayment </p><span>${newDebt.newAmount}</span></div>
-          <div><p>Current Total Repayment </p><span>${oldDebt.oldAmount}</span></div>
+          <div><p>New total Repayment </p><span>${(newDebt.newAmount).toFixed(2)}</span></div>
+          <div><p>Current Total Repayment </p><span>${(oldDebt.oldAmount).toFixed(2)}</span></div>
           <div><p>Total Repayment Savings </p><span>${(oldDebt.oldAmount - newDebt.newAmount).toFixed(2)}</span></div>
         </S.ContainerTotal>
         <S.ContainerMonth>
-          <div><p>New Monthly Repayment </p><span>${newDebt.newMonth}</span></div>
-          <div><p>Current Monthly Repayment </p><span>${oldDebt.oltMonth}</span></div>
+          <div><p>New Monthly Repayment </p><span>${(newDebt.newMonth).toFixed(2)}</span></div>
+          <div><p>Current Monthly Repayment </p><span>${(oldDebt.oltMonth).toFixed(2)}</span></div>
           <div><p>Total Monthly Savings </p><span>${(oldDebt.oltMonth - newDebt.newMonth).toFixed(2)}</span></div>
         </S.ContainerMonth>
       </S.Wrapper>
