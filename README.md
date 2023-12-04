@@ -1,21 +1,25 @@
 # SuperMoney Challenge
 
-This is a challenge provided by Max by Supermoney.com
+This is a challenge provided by Max by Supermoney.com 
 
-It tooks me 9 hours and 12 min
+It tooks me 10 hours and 20 min
 
-**Commits Timeline:**  \
+### 🕒 Commits Timeline:**  \
+10 hours and 20 min - Adding updating and clean remove. \
 9 hours and 12 min - Finished Design, Formulas, Cleaning code \
 7 - 8 hours - memonizied functions, spent too much time to understand finance (values match with figma?), Loan Model, Context and States \
 4 hour - 6hours and 45 min - Forms, refactors data structure, inputs details \
 1 hour - 3 hour - Built pages, create Hook, Optimized Performance, create models, functionalities and understand finance Results  \
 0 - 1 hour - Create repo and react app, Install packages, create archicteture, folder struture, Context, docker  
 
-### Alternatives to run application
+### 🐛 Known Bugs
+Formula to calculate the real finance is wrong. From those 10 hours, I spent 2 hour to create the formula.😔
+
+### 🙂 Alternatives to run application
 1) Run local via yarn start  
 2) Run local via docker-compose up
 
-### Alternative 1
+#### Alternative 1
 
 1.1. Clone the repo 
 
@@ -25,18 +29,17 @@ It tooks me 9 hours and 12 min
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Alternative 2 (via Docker)
+#### Alternative 2 (via Docker)
 
 1.1. Clone the repo 
 
 1.2. Run `docker-compose up`.
 
-1.3. to stop and clean, `docker-compose down`
-
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+1.3. to stop and clean, `docker-compose down`
 
-### TASK
+### 📝 TASK
 
 **Assignment:** Build a browser based Debt Consolidation Savings Calculator
 
@@ -54,6 +57,6 @@ A financial calculations library has been included to simplify the loan calculat
 
 ***Submitting the Solution:*** Create a new private repo in GitHub and invite maxSupermoney so that we can review the solution. Please let us know how many hours took you to complete the challenge.
 
-### Links
-Prototype: https://www.figma.com/proto/LVGPlj3qxywOt4zPagrFTX/Debt-Consolidation-Savings-Calculator?node-id=1%3A2&scaling=min-zoom&page-id=0%3A1
+### 🔗 Links
+Prototype: https://www.figma.com/proto/LVGPlj3qxywOt4zPagrFTX/Debt-Consolidation-Savings-Calculator?node-id=1%3A2&scaling=min-zoom&page-id=0%3A1 \
 Finance.js Loan Library: https://trentrichardson.com/examples/FinanceJs/index.html
