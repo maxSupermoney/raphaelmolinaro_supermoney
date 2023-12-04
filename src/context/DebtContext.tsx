@@ -6,6 +6,7 @@ interface DebtContextData {
   debtList: Debt[];
   addToList: (item: Debt) => void;
   removeFromList: (id: string) => void;
+  updateFromList: (id: string, data: Debt) => void;
 }
 
 interface DebtProviderProps {
@@ -25,7 +26,15 @@ export const DebtProvider = ({ children }: DebtProviderProps) => {
     setDebtList(st => st.filter((item) => item.id !== id));
   }
 
-  return (<DebtContext.Provider value={{ debtList, addToList, removeFromList }}>
+  function updateFromList(id: string, data: Debt) {
+    setDebtList(st => {
+      const idx = st.findIndex(item => item.id === id)
+      st.splice(idx, 1, data)
+      return st
+    });
+  }
+
+  return (<DebtContext.Provider value={{ debtList, addToList, removeFromList, updateFromList }}>
     {children}
   </DebtContext.Provider>)
 };

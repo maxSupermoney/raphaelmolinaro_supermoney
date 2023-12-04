@@ -7,14 +7,14 @@ export default class Loan {
   static getTotalByAmount(debts: Debt[]) {
     let amount = 0
     debts.forEach(debt => {
-      amount += debt.remainingAmount
+      amount += debt.amount
     })
     return amount
   }
   static getTotalByMonth(debts: Debt[]) {
     let amount = 0
     debts.forEach(debt => {
-      amount += debt.monthlyPayment
+      amount += debt.month
     })
     return amount
   }
@@ -31,11 +31,11 @@ export default class Loan {
     let oltMonth = 0
 
     debts.forEach(debt => {
-      const { remainingAmount, currentAPR, monthlyPayment } = debt
-      const time = finance.calculateMonths(remainingAmount, currentAPR, monthlyPayment)
-      oldAmount += finance.calculateAmount(time, currentAPR, monthlyPayment)
+      const { amount, apr, month } = debt
+      const time = finance.calculateMonths(amount, apr, month)
+      oldAmount += finance.calculateAmount(time, apr, month)
 
-      oltMonth += +monthlyPayment
+      oltMonth += +month
     })
 
     return { oldAmount, oltMonth }
